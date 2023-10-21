@@ -1,0 +1,18 @@
+//- header element with the class header.   
+header.header
+    //- nav element with classes of nav and nav--tours.  
+    nav.nav.nav--tours
+        a.nav__el(href="/") All Tours
+    //- This is a div element with class of header__logo, if the element is a div, I don't have to specify.   
+    .header__logo
+        img(src='/img/logo-white.png' alt='Natours Logo')
+    nav.nav.nav--user 
+        //- Render logout button if user is logged in, otherwise, render login and sign up buttons.  
+        if user
+            a.nav__el.nav__el--logout Logout
+            a.nav__el(href="/me")
+                img.nav__user-img(src=`/img/users/${user.photo}` alt=`Photo of ${user.name}`)
+                span= user.name.split(" ")[0]
+        else
+            a.nav__el(href='/login') Log In
+            a.nav__el.nav__el--cta(href='#')  Sign Up
