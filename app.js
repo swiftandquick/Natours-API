@@ -11,6 +11,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const csp = require('express-csp');
+const compression = require('compression');
 
 // Require the AppError class from AppError.js.  
 const AppError = require('./utils/appError');
@@ -146,10 +147,13 @@ app.use(express.json());
 // Serve static files from the public directory.  
 app.use(express.static(`${__dirname}/public`));
 
+// Use compression as middleware.  
+app.use(compression());
+
 // Use a middleware to add a requestTime property to the req object, which is set to current time in string.  
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
-    console.log(req.cookies);
+    // console.log(req.cookies);
     next();
 });
 

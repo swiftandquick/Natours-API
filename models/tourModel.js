@@ -177,7 +177,7 @@ tourSchema.pre(/^find/, function(next) {
 // After the any query that starts with "find", such as findById(), findOne(), or find() is invoked, a function will be called.  
 // Print out the the time it takes to execute the query after the find queries are executed.  
 tourSchema.post(/^find/, function(docs, next) {
-    console.log(`Query took ${Date.now() - this.start} milliseconds.`);
+    // console.log(`Query took ${Date.now() - this.start} milliseconds.`);
     next();
 });
 
